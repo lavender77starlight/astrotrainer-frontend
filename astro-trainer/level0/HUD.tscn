@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://dvyf8e6po6p2p"]
+
+[ext_resource type="PackedScene" uid="uid://cf82qih0k54pa" path="res://BasicComponents/CadetPanel.tscn" id="1_uoh7u"]
+[ext_resource type="PackedScene" uid="uid://drxk1c10cgnta" path="res://BasicComponents/SuitPanel.tscn" id="2_otump"]
+[ext_resource type="PackedScene" uid="uid://t6cq0vqql3fe" path="res://BasicComponents/MetersPanel.tscn" id="3_n07s3"]
+[ext_resource type="PackedScene" uid="uid://sf4o2cp2yhlo" path="res://BasicComponents/MissionLogPanel.tscn" id="4_duenk"]
+[ext_resource type="PackedScene" uid="uid://c6ymeniib77fs" path="res://BasicComponents/AriaPanel.tscn" id="5_4e6m7"]
+[ext_resource type="PackedScene" uid="uid://big5pnqnue4ku" path="res://BasicComponents/DialogueBox.tscn" id="6_5ssiy"]
+
+[node name="Hud" type="CanvasLayer" unique_id=1896326436]
+
+[node name="CadetPanel" parent="." unique_id=1921393657 instance=ExtResource("1_uoh7u")]
+
+[node name="SuitPanel" parent="." unique_id=1180467384 instance=ExtResource("2_otump")]
+offset_left = 1166.0
+offset_top = 3.0
+offset_right = 1276.0
+offset_bottom = 335.0
+
+[node name="MetersPanel" parent="." unique_id=1871571848 instance=ExtResource("3_n07s3")]
+offset_left = 3.0
+offset_top = 120.0
+offset_right = 345.0
+offset_bottom = 278.0
+
+[node name="MissionLogPanel" parent="." unique_id=655619122 instance=ExtResource("4_duenk")]
+offset_left = 3.0
+offset_top = 289.0
+offset_right = 176.0
+offset_bottom = 420.0
+
+[node name="AriaPanel" parent="." unique_id=359747124 instance=ExtResource("5_4e6m7")]
+offset_left = 1030.0
+offset_top = 589.0
+offset_right = 1280.0
+offset_bottom = 716.0
+
+[node name="DialogueBox" parent="." unique_id=1735179706 instance=ExtResource("6_5ssiy")]
+offset_left = 546.0
+offset_top = 631.0
+offset_right = 807.0
+offset_bottom = 716.0
