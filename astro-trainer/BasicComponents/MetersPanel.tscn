@@ -85,28 +85,54 @@ custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "60%"
 
-[node name="FoodRow2" type="HBoxContainer" parent="VBoxContainer" unique_id=2089976827]
+[node name="PowerRow" type="HBoxContainer" parent="VBoxContainer" unique_id=2089976827]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="FoodIcon" type="Label" parent="VBoxContainer/FoodRow2" unique_id=1183874413]
+[node name="PowerIcon" type="Label" parent="VBoxContainer/PowerRow" unique_id=1183874413]
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
-text = "🍎"
+text = "⚡"
 
-[node name="FoodLabel" type="Label" parent="VBoxContainer/FoodRow2" unique_id=101860539]
+[node name="PowerLabel" type="Label" parent="VBoxContainer/PowerRow" unique_id=101860539]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
-text = "FOOD"
+text = "POWER"
 
-[node name="FoodBar" type="ProgressBar" parent="VBoxContainer/FoodRow2" unique_id=1727756163]
+[node name="PowerBar" type="ProgressBar" parent="VBoxContainer/PowerRow" unique_id=1727756163]
 custom_minimum_size = Vector2(180, 20)
 layout_mode = 2
 size_flags_horizontal = 3
-value = 60.0
+value = 75.0
 show_percentage = false
 
-[node name="FoodValue" type="Label" parent="VBoxContainer/FoodRow2" unique_id=214570168]
+[node name="PowerValue" type="Label" parent="VBoxContainer/PowerRow" unique_id=214570168]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
-text = "60%"
+text = "75%"
+
+[node name="ShieldRow" type="HBoxContainer" parent="VBoxContainer" unique_id=1302867072]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ShieldIcon" type="Label" parent="VBoxContainer/ShieldRow" unique_id=1790438173]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "🛡️"
+
+[node name="ShieldLabel" type="Label" parent="VBoxContainer/ShieldRow" unique_id=1424548206]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "SHIELD"
+
+[node name="ShieldBar" type="ProgressBar" parent="VBoxContainer/ShieldRow" unique_id=225603205]
+custom_minimum_size = Vector2(180, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+value = 90.0
+show_percentage = false
+
+[node name="ShieldValue" type="Label" parent="VBoxContainer/ShieldRow" unique_id=1543328909]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "90%"
