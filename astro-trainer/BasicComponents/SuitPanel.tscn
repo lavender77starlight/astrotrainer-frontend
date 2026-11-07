@@ -1,3 +1,61 @@
 [gd_scene format=3 uid="uid://drxk1c10cgnta"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xc65c"]
+bg_color = Color(0.18039216, 0.8, 0.44313726, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ypbpc"]
+bg_color = Color(0.9019608, 0.49411765, 0.13333334, 1)
+
 [node name="SuitPanel" type="PanelContainer" unique_id=1180467384]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1483685622]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="SuitTitle" type="Label" parent="VBoxContainer" unique_id=702747851]
+layout_mode = 2
+text = "SUIT"
+
+[node name="SuitImage" type="TextureRect" parent="VBoxContainer" unique_id=51497348]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="SuitValue" type="Label" parent="VBoxContainer" unique_id=185612121]
+layout_mode = 2
+text = "92%"
+
+[node name="SuitBar" type="ProgressBar" parent="VBoxContainer" unique_id=1054721353]
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_xc65c")
+value = 92.0
+show_percentage = false
+
+[node name="ThermalTitle" type="Label" parent="VBoxContainer" unique_id=318047548]
+layout_mode = 2
+text = "THERMAL"
+
+[node name="ThermalValue" type="Label" parent="VBoxContainer" unique_id=1770667121]
+layout_mode = 2
+text = "68°C"
+
+[node name="ThermalBar" type="ProgressBar" parent="VBoxContainer" unique_id=713272758]
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_ypbpc")
+value = 68.0
+show_percentage = false
+
+[node name="MissionTimeTitle" type="Label" parent="VBoxContainer" unique_id=1310420583]
+layout_mode = 2
+text = "MISSION TIME"
+
+[node name="MissionTimeValue" type="Label" parent="VBoxContainer" unique_id=168052250]
+layout_mode = 2
+text = "02:14:33"
+
+[node name="StatusTitle" type="Label" parent="VBoxContainer" unique_id=840714118]
+layout_mode = 2
+text = "STATUS"
+
+[node name="StatusValue" type="Label" parent="VBoxContainer" unique_id=729473924]
+layout_mode = 2
+text = "NOMINAL"
