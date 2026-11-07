@@ -1,3 +1,29 @@
 [gd_scene format=3 uid="uid://sf4o2cp2yhlo"]
 
+[sub_resource type="SystemFont" id="SystemFont_xc65c"]
+
 [node name="MissionLogPanel" type="PanelContainer" unique_id=655619122]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=790664959]
+layout_mode = 2
+
+[node name="LogTitle" type="Label" parent="VBoxContainer" unique_id=1997653497]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_xc65c")
+text = "MISSION LOG"
+
+[node name="Log1" type="Label" parent="VBoxContainer" unique_id=1433165567]
+layout_mode = 2
+text = "▶ Find the airlock"
+
+[node name="Log2" type="Label" parent="VBoxContainer" unique_id=599283515]
+layout_mode = 2
+text = "▶ Check oxygen levels"
+
+[node name="Log3" type="Label" parent="VBoxContainer" unique_id=279374035]
+layout_mode = 2
+text = " ▶ Prepare outpost"
+
+[node name="LogProgress" type="Label" parent="VBoxContainer" unique_id=948666803]
+layout_mode = 2
+text = "Progress: 1/3"
