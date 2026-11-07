@@ -1,17 +1,112 @@
 [gd_scene format=3 uid="uid://t6cq0vqql3fe"]
 
-[node name="MetersPanel" type="PanelContainer" unique_id=1313481615]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MetersPanel" type="PanelContainer" unique_id=1871571848]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=288862087]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1788339288]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer" unique_id=1942286680]
+[node name="MetersTitle" type="Label" parent="VBoxContainer" unique_id=2086774428]
 layout_mode = 2
-text = "Meters
-"
+text = "LIFE SUPPORT"
+
+[node name="O2Row" type="HBoxContainer" parent="VBoxContainer" unique_id=1434329484]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="O2Icon" type="Label" parent="VBoxContainer/O2Row" unique_id=1021345045]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "O2"
+
+[node name="O2Label" type="Label" parent="VBoxContainer/O2Row" unique_id=1858106417]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "O2"
+
+[node name="O2Bar" type="ProgressBar" parent="VBoxContainer/O2Row" unique_id=1559373609]
+custom_minimum_size = Vector2(180, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+value = 70.0
+show_percentage = false
+
+[node name="O2Value" type="Label" parent="VBoxContainer/O2Row" unique_id=1526305933]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "70%"
+
+[node name="WaterRow" type="HBoxContainer" parent="VBoxContainer" unique_id=926161981]
+layout_mode = 2
+
+[node name="WaterIcon" type="Label" parent="VBoxContainer/WaterRow" unique_id=1838328480]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "💧"
+
+[node name="WaterLabel" type="Label" parent="VBoxContainer/WaterRow" unique_id=1463353310]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "WATER"
+
+[node name="WaterBar" type="ProgressBar" parent="VBoxContainer/WaterRow" unique_id=447275627]
+custom_minimum_size = Vector2(180, 20)
+layout_mode = 2
+value = 65.0
+show_percentage = false
+
+[node name="WaterValue" type="Label" parent="VBoxContainer/WaterRow" unique_id=2040493494]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "65%"
+
+[node name="FoodRow" type="HBoxContainer" parent="VBoxContainer" unique_id=1866795155]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="FoodIcon" type="Label" parent="VBoxContainer/FoodRow" unique_id=674462120]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "🍎"
+
+[node name="FoodLabel" type="Label" parent="VBoxContainer/FoodRow" unique_id=288209707]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "FOOD"
+
+[node name="FoodBar" type="ProgressBar" parent="VBoxContainer/FoodRow" unique_id=1450482201]
+custom_minimum_size = Vector2(180, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+value = 60.0
+show_percentage = false
+
+[node name="FoodValue" type="Label" parent="VBoxContainer/FoodRow" unique_id=817190550]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "60%"
+
+[node name="FoodRow2" type="HBoxContainer" parent="VBoxContainer" unique_id=2089976827]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="FoodIcon" type="Label" parent="VBoxContainer/FoodRow2" unique_id=1183874413]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "🍎"
+
+[node name="FoodLabel" type="Label" parent="VBoxContainer/FoodRow2" unique_id=101860539]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "FOOD"
+
+[node name="FoodBar" type="ProgressBar" parent="VBoxContainer/FoodRow2" unique_id=1727756163]
+custom_minimum_size = Vector2(180, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+value = 60.0
+show_percentage = false
+
+[node name="FoodValue" type="Label" parent="VBoxContainer/FoodRow2" unique_id=214570168]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "60%"
