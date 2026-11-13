@@ -1,0 +1,63 @@
+{
+  "level1_prep_and_launch": {
+    "site": "Kennedy Space Center LC-39B",
+    "geomagneticStormIndex": 3,
+    "weatherStatus": "Nominal - Clear for T-Minus Countdown",
+    "suits": [
+      {
+        "id": "standard",
+        "name": "Artemis Mk-IV Standard",
+        "maxOxygen": 100,
+        "maxPower": 100,
+        "baseSpeed": 100,
+        "radiationShielding": "Medium"
+      },
+      {
+        "id": "heavy_shield",
+        "name": "Solar-Guard EVA Suit",
+        "maxOxygen": 90,
+        "maxPower": 120,
+        "baseSpeed": 85,
+        "radiationShielding": "High"
+      },
+      {
+        "id": "recon_light",
+        "name": "Valkyrie Recon Suit",
+        "maxOxygen": 115,
+        "maxPower": 85,
+        "baseSpeed": 120,
+        "radiationShielding": "Low"
+      }
+    ],
+    "aiEvent": {
+      "question": "Upper atmosphere wind shear detected. Engage auxiliary booster (+25% speed) at the cost of 15% suit power and 10% oxygen?",
+      "tradeoffKey": "boost_speed"
+    }
+  },
+  "level2_transit": {
+    "solarFlareClass": "M2.4",
+    "radiationAlert": true,
+    "asteroids": [
+      { "id": "AST-104", "diameterMeters": 42, "velocityKms": 18.5, "hazardLevel": "Medium" },
+      { "id": "AST-209", "diameterMeters": 85, "velocityKms": 24.1, "hazardLevel": "High" }
+    ],
+    "aiEvent": {
+      "question": "Class M2.4 Solar Flare inbound. Reroute propulsion power to radiation shields (+20% power, -15% speed)?",
+      "tradeoffKey": "reroute_shields"
+    }
+  },
+  "level3_mars": {
+    "landingZone": "Jezero Crater",
+    "surfaceTempCelsius": -62,
+    "dustOpacity": 0.45,
+    "waypoints": [
+      { "id": "WP-1", "name": "Perseverance Rover Beacon", "x": 120, "y": 340, "hazard": "None" },
+      { "id": "WP-2", "name": "Ancient River Delta Ridge", "x": 480, "y": 210, "hazard": "High Radiation" },
+      { "id": "WP-3", "name": "ISRU Oxygen Extraction Base", "x": 850, "y": 500, "hazard": "Dust Squall" }
+    ],
+    "aiEvent": {
+      "question": "Dust squall approaching Jezero Crater. Reduce suit pace (-20% speed) to conserve 15% oxygen reserves?",
+      "tradeoffKey": "conserve_oxygen"
+    }
+  }
+}
