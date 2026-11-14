@@ -15,9 +15,9 @@ signal finale_resolved(result: Dictionary)
 
 # ==========================================
 # SERVER & SESSION CONFIG
-# ========================================
-var use_mock_backend: bool = true
-const BASE_URL: String = "http://localhost:3000" 
+# ==========================================
+var use_mock_backend: bool = false
+const BASE_URL: String = "http://localhost:3000"
 const SESSION_PATH: String = "user://session.cfg"
 
 var auth_token: String = ""
@@ -168,7 +168,7 @@ func fetch_mission_data() -> void:
 		mission_data_loaded.emit(mission_data)
 	)
 
-func ask_aria(player_message: String, stage_key: String = "level2_transit") -> void:
+func ask_aria(player_message: String, stage_key: String = "level2_transit", decision: String = "") -> void:
 	if use_mock_backend:
 		aria_dialogue = "ARIA (Offline): Received '" + player_message + "' (" + stage_key + ")."
 		telemetry_updated.emit()
@@ -178,6 +178,7 @@ func ask_aria(player_message: String, stage_key: String = "level2_transit") -> v
 	var body := {
 		"message": player_message,
 		"stageKey": stage_key,
+		"decision": decision if decision != "" else player_message,
 		"telemetry": {
 			"oxygenLevel": oxygen_level,
 			"suitPower": suit_power,
@@ -191,21 +192,22 @@ func ask_aria(player_message: String, stage_key: String = "level2_transit") -> v
 			aria_replied.emit(aria_dialogue)
 	)
 
-func trigger_event(stage_key: String = "level2_transit") -> void:
+func trigger_event(stage_key: String = "level2_transit", decision: String = "") -> void:
 	var body := {
 		"stageKey": stage_key,
 		"currentMeters": _get_meters_array(),
 		"seenHazardIds": seen_hazard_ids,
-		"landingZoneId": active_landing_zone.get("id", null)
+		"landingZoneId": active_landing_zone.get("id", null),
+		"decision": decision if decision != "" else null
 	}
 	_send_request("/api/event", HTTPClient.METHOD_POST, body, func(code: int, data: Dictionary):
 		if code == 200:
-			if data.has("hazard") and data["hazard"] is Dictionary and data["hazard"].has("id"):
-				var hid := str(data["hazard"]["id"])
+			if data.has("hazardTriggered") and data["hazardTriggered"] is Dictionary and data["hazardTriggered"].has("id"):
+				var hid := str(data["hazardTriggered"]["id"])
 				if not seen_hazard_ids.has(hid):
 					seen_hazard_ids.append(hid)
-			elif data.has("id"):
-				var hid := str(data["id"])
+			elif data.has("hazard") and data["hazard"] is Dictionary and data["hazard"].has("id"):
+				var hid := str(data["hazard"]["id"])
 				if not seen_hazard_ids.has(hid):
 					seen_hazard_ids.append(hid)
 			apply_aria_payload(data)
@@ -259,10 +261,10 @@ func submit_finale(priorities: Array[String]) -> void:
 			finale_resolved.emit(data)
 	)
 
-func adjust_pressure(stage: String, current_pressure_kpa: float) -> void:
+func adjust_pressure(stage_key: String, target_pressure_kpa: float) -> void:
 	var body := {
-		"stage": stage,
-		"currentPressureKpa": current_pressure_kpa,
+		"stageKey": stage_key,
+		"targetPressureKpa": target_pressure_kpa,
 		"currentMeters": _get_meters_array()
 	}
 	_send_request("/api/pressure/adjust", HTTPClient.METHOD_POST, body, func(code: int, data: Dictionary):
@@ -271,10 +273,10 @@ func adjust_pressure(stage: String, current_pressure_kpa: float) -> void:
 			pressure_adjusted.emit(data)
 	)
 
-func survive_mars_day(day_number: int, food_choice_id: String = "hydroponic_greens") -> void:
+func survive_mars_day(day_number: int, strategy_id: String = "rehydratable") -> void:
 	var body := {
 		"dayNumber": day_number,
-		"foodChoiceId": food_choice_id,
+		"strategyId": strategy_id,
 		"landingZoneId": active_landing_zone.get("id", "jezero_crater"),
 		"currentMeters": _get_meters_array()
 	}
@@ -313,14 +315,26 @@ func get_mock_mars_data() -> Dictionary:
 func apply_aria_payload(payload: Dictionary) -> void:
 	if payload.has("ariaDialogue"):
 		aria_dialogue = str(payload["ariaDialogue"])
+
+	var has_new_telemetry := false
+
 	if payload.has("updatedTelemetry") and payload["updatedTelemetry"] is Dictionary:
 		var t: Dictionary = payload["updatedTelemetry"]
 		oxygen_level = float(t.get("oxygenLevel", oxygen_level))
 		suit_power = float(t.get("suitPower", suit_power))
 		speed = float(t.get("speed", speed))
+		detailed_meters["o2Percent"] = oxygen_level
+		detailed_meters["powerPercent"] = suit_power
+		has_new_telemetry = true
+
 	if payload.has("detailedMeters") and payload["detailedMeters"] is Dictionary:
 		detailed_meters.merge(payload["detailedMeters"], true)
-	telemetry_updated.emit()
+		oxygen_level = float(detailed_meters.get("o2Percent", oxygen_level))
+		suit_power = float(detailed_meters.get("powerPercent", suit_power))
+		has_new_telemetry = true
+
+	if has_new_telemetry:
+		telemetry_updated.emit()
 
 # ==========================================
 # INTERNAL HTTP HELPER
