@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://ers001cp1383"]
+
+[ext_resource type="Script" uid="uid://cnp5w4hmpi4mk" path="res://level3/scripts/level_3.gd" id="1_nw54n"]
+[ext_resource type="Texture2D" uid="uid://dik4q3gd8ub58" path="res://level3/assests/marsbackground.jpeg" id="2_h2sfa"]
+[ext_resource type="Texture2D" uid="uid://c6dy86cx3hx8f" path="res://level3/assests/astronout.png-removebg-preview.png" id="3_h2sfa"]
+[ext_resource type="Script" uid="uid://dqxe0usteqcm" path="res://level3/scripts/astronout.gd" id="4_0bk0f"]
+[ext_resource type="AudioStream" uid="uid://dkeyk1giob8i2" path="res://level3/assests/footstep.mp3" id="5_lmiu7"]
+
+[node name="level3" type="Control" unique_id=585964247]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nw54n")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2073742169]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_h2sfa")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="astronout" type="Sprite2D" parent="." unique_id=1639540881]
+position = Vector2(460, 460)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("3_h2sfa")
+script = ExtResource("4_0bk0f")
+
+[node name="stepsound" type="AudioStreamPlayer2D" parent="astronout" unique_id=400952092]
+stream = ExtResource("5_lmiu7")
+volume_db = 1.084
+pitch_scale = 1.5
